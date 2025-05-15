@@ -839,9 +839,17 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 5790119949063306014, guid: 164488655d38117489cb7bbf6e6df4ff, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6422475149225127467, guid: 164488655d38117489cb7bbf6e6df4ff, type: 3}
       propertyPath: m_Name
       value: LevelLoader
+      objectReference: {fileID: 0}
+    - target: {fileID: 6422475149225127467, guid: 164488655d38117489cb7bbf6e6df4ff, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8044335108650168375, guid: 164488655d38117489cb7bbf6e6df4ff, type: 3}
       propertyPath: m_LocalPosition.x
@@ -884,7 +892,8 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 7015581336568624141, guid: 164488655d38117489cb7bbf6e6df4ff, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 164488655d38117489cb7bbf6e6df4ff, type: 3}
