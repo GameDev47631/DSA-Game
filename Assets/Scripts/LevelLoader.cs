@@ -5,6 +5,11 @@ using UnityEngine.SceneManagement;
 
 public class LevelLoader : MonoBehaviour {
     /* https://www.youtube.com/watch?v=CE9VOZivb3I?t=556*/
+
+    // Start is called before the first frame update
+    void Start() {
+        //
+    }
     
     public Animator transition;
     public float transitioning = 1f;

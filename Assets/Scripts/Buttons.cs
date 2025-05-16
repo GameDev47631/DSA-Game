@@ -21,7 +21,7 @@ public class Buttons : MonoBehaviour {
                 break;
             
             default:
-                Debug.LogWarning("Button ID name changed!");
+                Debug.LogWarning("ID name changed!");
                 break;
         }
     }
