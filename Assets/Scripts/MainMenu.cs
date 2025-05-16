@@ -4,18 +4,22 @@ using UnityEngine;
 
 public class MainMenu : MonoBehaviour {
     public GameObject gameTitle;
-    public TextMeshProUGUI additionalText;
-    public GameObject creditsIcon, creditsList;
+    public TextMeshProUGUI shortText;
+    private Coroutine noShortText;
+    public GameObject creditsIcon;
 
     public float delay = 5f, fade = 1f;
+    private bool screenClicked = false;
     
 
     void Start() {
-        if (additionalText != null) {
-            Color c = additionalText.color;
+        gameTitle.gameObject.SetActive(true);
+
+        if (shortText != null) {
+            Color c = shortText.color;
             c.a = 0f;
-            additionalText.color = c;
-            additionalText.gameObject.SetActive(false);
+            shortText.color = c;
+            shortText.gameObject.SetActive(false);
             StartCoroutine(RevealText());
         }
 
@@ -26,7 +30,14 @@ public class MainMenu : MonoBehaviour {
 
     // Update is called once per frame
     void Update() {
-        if (Input.GetMouseButtonDown(0)) {
+        if (Input.GetMouseButtonDown(0) && !screenClicked) {
+            screenClicked = true;
+    
+            // Stop text reveal coroutine if it's still running
+            if (noShortText != null) {
+                StopCoroutine(noShortText);
+            }
+
             LoadMainMenu();
         }
     }
@@ -35,24 +46,27 @@ public class MainMenu : MonoBehaviour {
         // "A text will appear if the title screen isn't already clicked."
         yield return new WaitForSeconds(delay);
 
-        additionalText.gameObject.SetActive(true);
+        if (screenClicked) yield break;
+        
+        shortText.gameObject.SetActive(true);
 
         float elapsed = 0f;
-        Color originalColor = additionalText.color;
+        Color originalColor = shortText.color;
 
         while (elapsed < fade) {
+            if (screenClicked) yield break;
             float alpha = Mathf.Clamp01(elapsed / fade);
-            additionalText.color = new Color(originalColor.r, originalColor.g, originalColor.b, alpha);
+            shortText.color = new Color(originalColor.r, originalColor.g, originalColor.b, alpha);
             elapsed += Time.deltaTime;
             yield return null;
         }
 
-        additionalText.color = new Color(originalColor.r, originalColor.g, originalColor.b, 1f);
+        shortText.color = new Color(originalColor.r, originalColor.g, originalColor.b, 1f);
     }
 
     public void LoadMainMenu() {
         gameTitle.gameObject.SetActive(false);
-        additionalText.gameObject.SetActive(false);
+        shortText.gameObject.SetActive(false);
 
         creditsIcon.gameObject.SetActive(true);
     }
