@@ -8,7 +8,7 @@ public class LevelLoader : MonoBehaviour {
 
     // Start is called before the first frame update
     void Start() {
-        //
+        
     }
     
     public Animator transition;
@@ -23,7 +23,7 @@ public class LevelLoader : MonoBehaviour {
     }
 
     public void LoadNextLevel() {
-        StartCoroutine(LoadLevel((SceneManager.GetActiveScene().buildIndex + 1)));
+        StartCoroutine(LoadLevel(SceneManager.GetActiveScene().buildIndex + 1));
     }
 
     IEnumerator LoadLevel(int levelIndex) {
