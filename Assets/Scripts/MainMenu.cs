@@ -3,10 +3,9 @@ using TMPro;
 using UnityEngine;
 
 public class MainMenu : MonoBehaviour {
-    public GameObject gameTitle;
-    public TextMeshProUGUI shortText;
-    private Coroutine noShortText;
-    public GameObject creditsIcon;
+    public TextMeshProUGUI gameTitle, shortText;
+    private readonly Coroutine noShortText;
+    public GameObject playButton, creditsButton;
 
     public float delay = 5f, fade = 1f;
     private bool screenClicked = false;
@@ -20,12 +19,11 @@ public class MainMenu : MonoBehaviour {
             c.a = 0f;
             shortText.color = c;
             shortText.gameObject.SetActive(false);
-            StartCoroutine(RevealText());
+            StartCoroutine(FadeIn());
         }
 
-        if (creditsIcon != null) {
-            creditsIcon.gameObject.SetActive(false);
-        }
+        playButton?.gameObject.SetActive(false);
+        creditsButton?.gameObject.SetActive(false);
     }
 
     // Update is called once per frame
@@ -42,7 +40,7 @@ public class MainMenu : MonoBehaviour {
         }
     }
 
-    IEnumerator RevealText() {
+    IEnumerator FadeIn() {
         // "A text will appear if the title screen isn't already clicked."
         yield return new WaitForSeconds(delay);
 
@@ -64,10 +62,28 @@ public class MainMenu : MonoBehaviour {
         shortText.color = new Color(originalColor.r, originalColor.g, originalColor.b, 1f);
     }
 
-    public void LoadMainMenu() {
+    IEnumerator FadeOut() {
+        float elapsed = 0f;
+        Color originalColor = gameTitle.color;
+
+        while (elapsed < fade) {
+            float alpha = Mathf.Lerp(1f, 0f, elapsed / fade);
+            gameTitle.color = new Color(originalColor.r, originalColor.g, originalColor.b, alpha);
+            elapsed += Time.deltaTime;
+            yield return null;
+        }
+
+        gameTitle.color = new Color(originalColor.r, originalColor.g, originalColor.b, 0f);
         gameTitle.gameObject.SetActive(false);
+    }
+
+    public void LoadMainMenu() {
+        /* gameTitle.gameObject.SetActive(false); */
+        StartCoroutine(FadeOut());
+
         shortText.gameObject.SetActive(false);
 
-        creditsIcon.gameObject.SetActive(true);
+        playButton.gameObject.SetActive(true);
+        creditsButton.gameObject.SetActive(true);
     }
 }
