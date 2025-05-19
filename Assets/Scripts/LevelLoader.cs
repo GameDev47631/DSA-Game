@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class LevelLoader : MonoBehaviour {
-    /* https://www.youtube.com/watch?v=CE9VOZivb3I?t=556*/
+    /* https://www.youtube.com/watch?v=CE9VOZivb3I? */
 
     // Start is called before the first frame update
     void Start() {
