@@ -427,7 +427,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0aef211a1aa79654f90b278fd171c413, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  button: {fileID: 253085331}
 --- !u!1 &294668498
 GameObject:
   m_ObjectHideFlags: 0
@@ -1144,7 +1143,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0aef211a1aa79654f90b278fd171c413, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  button: {fileID: 633649226}
 --- !u!1 &685679294
 GameObject:
   m_ObjectHideFlags: 0
@@ -2046,6 +2044,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gameTitle: {fileID: 881861426}
   shortText: {fileID: 825777111}
+  playButton: {fileID: 633649226}
+  creditsButton: {fileID: 253085331}
 --- !u!1 &1248944655
 GameObject:
   m_ObjectHideFlags: 0
