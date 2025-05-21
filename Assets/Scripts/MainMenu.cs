@@ -42,7 +42,12 @@ public class MainMenu : MonoBehaviour {
 
     public void LoadMainMenu() {
         /* gameTitle.gameObject.SetActive(false); */
-        StartCoroutine(Buttons());
+        StartCoroutine(FadeOut());
+
+        shortText.gameObject.SetActive(false);
+
+        playButton.gameObject.SetActive(true);
+        creditsButton.gameObject.SetActive(true);
     }
 
     IEnumerator FadeIn() {
@@ -80,42 +85,5 @@ public class MainMenu : MonoBehaviour {
 
         gameTitle.color = new Color(originalColor.r, originalColor.g, originalColor.b, 0f);
         gameTitle.gameObject.SetActive(false);
-    }
-
-    IEnumerator FadeInButtons() {
-        CanvasGroup playGroup = playButton.GetComponent<CanvasGroup>();
-        CanvasGroup creditsGroup = creditsButton.GetComponent<CanvasGroup>();
-
-        if (playGroup == null) {
-            playGroup = playButton.AddComponent<CanvasGroup>();
-        }
-        if (creditsGroup == null) {
-            creditsGroup = creditsButton.AddComponent<CanvasGroup>();
-        }
-
-        playButton.SetActive(true);
-        creditsButton.SetActive(true);
-
-        playGroup.alpha = 0f;
-        creditsGroup.alpha = 0f;
-
-        float elapsed = 0f;
-
-        while (elapsed < fade) {
-            float alpha = Mathf.Clamp01(elapsed / fade);
-            playGroup.alpha = alpha;
-            creditsGroup.alpha = alpha;
-            elapsed += Time.deltaTime;
-            yield return null;
-        }
-
-        playGroup.alpha = 1f;
-        creditsGroup.alpha = 1f;
-    }
-
-    IEnumerator Buttons() {
-        shortText.gameObject.SetActive(false);
-        yield return StartCoroutine(FadeOut());
-        yield return StartCoroutine(FadeInButtons());
     }
 }
