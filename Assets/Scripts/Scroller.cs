@@ -8,6 +8,12 @@ public class Scroller : MonoBehaviour {
     [SerializeField] private RawImage backgroundImage;
     [SerializeField] private float xAxis, yAxis;
 
+   // Start is called before the first frame update
+    void Start() {
+        
+    }
+    
+    // Update is called once per frame
    void Update() {
        backgroundImage.uvRect = new Rect(backgroundImage.uvRect.position + new Vector2(xAxis, yAxis) * Time.deltaTime, backgroundImage.uvRect.size);
    }
