@@ -15,6 +15,7 @@ namespace Virtence.Common.Utilities
 	[UnityEngine.Scripting.Preserve]
 	public class WebRequestUtilities
     {
+        [System.Obsolete]
         public static IEnumerator SendRequest(UnityWebRequest request, System.Action<UnityWebRequest> startedCallback, System.Action<UnityWebRequest> progressCallback, System.Action<bool, UnityWebRequest> finishedCallback, bool disposeAfterFinishedEvent = true)
         {
             request.SendWebRequest();

@@ -16,19 +16,32 @@ public class MainMenu : MonoBehaviour {
         
     }
 
+    public void TitleScreen() {
+        SceneManager.LoadScene("MainMenu");
+    }
+
     public void Play() {
         SceneManager.LoadScene("LevelSelect");
     }
 
-    public void Settings() {
-        SceneManager.LoadScene("Settings");
-    }
+    // public void Settings() {
+    //     SceneManager.LoadScene("Settings");
+    // }
 
     public void Credits() {
         SceneManager.LoadScene("Credits");
     }
 
     public void Quit() {
-        Application.Quit();
+        /* https://stackoverflow.com/questions/70437401/cannot-finish-the-game-in-unity-using-application-quit
+         * "This whole code will get the 'Quit' button to work in the Unity Editor." */
+        #if UNITY_STANDALONE
+            /* "This line by itself only works in a build." */
+            Application.Quit();
+        #endif
+        
+        #if UNITY_EDITOR
+            UnityEditor.EditorApplication.isPlaying = false;
+        #endif
     }
 }
