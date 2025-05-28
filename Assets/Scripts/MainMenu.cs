@@ -32,16 +32,21 @@ public class MainMenu : MonoBehaviour {
         SceneManager.LoadScene("Credits");
     }
 
+
+    /* "This code was moved to the 'Transition' script.
+        All comments prior to moving must stay."
+
     public void Quit() {
-        /* https://stackoverflow.com/questions/70437401/cannot-finish-the-game-in-unity-using-application-quit
-         * "This whole code will get the 'Quit' button to work in the Unity Editor." */
+        https://stackoverflow.com/questions/70437401/cannot-finish-the-game-in-unity-using-application-quit
+        
+        "This whole code will get the 'Quit' button to work in the Unity Editor."
         #if UNITY_STANDALONE
-            /* "This line by itself only works in a build." */
+            "This line by itself only works in a build."
             Application.Quit();
         #endif
         
         #if UNITY_EDITOR
             UnityEditor.EditorApplication.isPlaying = false;
         #endif
-    }
+    } */
 }
