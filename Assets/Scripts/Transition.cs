@@ -3,30 +3,31 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class LevelLoader : MonoBehaviour {
+public class Transition : MonoBehaviour {
     /* https://www.youtube.com/watch?v=CE9VOZivb3I? */
-     
+
     public Animator transition;
     public float transitioning = 1f;
-    
+
     // Start is called before the first frame update
     void Start() {
-        
+
     }
 
     // Update is called once per frame
     void Update() {
-        // "Clicking the button."
-        if (Input.GetMouseButtonDown(0)) {
-            LoadNextLevel();
-        }
+
     }
 
-    public void LoadNextLevel() {
-        StartCoroutine(LoadLevel(SceneManager.GetActiveScene().buildIndex + 1));
+    // public void LoadNextScene() {
+    //     StartCoroutine(LoadLevel(SceneManager.GetActiveScene().buildIndex + 1));
+    // }
+
+    public void LoadSceneByName(string sceneName) {
+        StartCoroutine(Loading(sceneName.ToString()));
     }
 
-    IEnumerator LoadLevel(int levelIndex) {
+    IEnumerator Loading(string sceneName) {
         // "Animate the scene transition."
         transition.SetTrigger("Start");
 
@@ -34,6 +35,6 @@ public class LevelLoader : MonoBehaviour {
         yield return new WaitForSeconds(transitioning);
 
         // "Now, you can interact with the next scene."
-        SceneManager.LoadScene(levelIndex);
+        SceneManager.LoadScene(sceneName);
     }
 }
