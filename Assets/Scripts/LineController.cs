@@ -9,10 +9,12 @@ public class LR_LineController : MonoBehaviour {
     private LineRenderer lineRenderer;
     private Vector3[] vertices;
     private int numVertices;
-    
+
     // Start is called before the first frame update
     void Start() {
         lineRenderer = GetComponent<LineRenderer>();
+
+        lineRenderer.sortingOrder = -1;
 
         numVertices = lineRenderer.positionCount;
         vertices = new Vector3[numVertices];
@@ -25,7 +27,7 @@ public class LR_LineController : MonoBehaviour {
 
     // Update is called once per frame
     void Update() {
-        
+
     }
 
     private IEnumerator AnimateLine() {
