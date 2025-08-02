@@ -14,8 +14,6 @@ public class LR_LineController : MonoBehaviour {
     void Start() {
         lineRenderer = GetComponent<LineRenderer>();
 
-        lineRenderer.sortingOrder = -1;
-
         numVertices = lineRenderer.positionCount;
         vertices = new Vector3[numVertices];
         for (int i = 0; i < numVertices; i++) {
