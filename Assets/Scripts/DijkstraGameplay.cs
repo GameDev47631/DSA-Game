@@ -25,6 +25,12 @@ public class DijkstraGameplay : MonoBehaviour {
         } else if (Input.GetKeyDown(KeyCode.RightArrow)) {
             Selection(1);
         }
+
+        if (Input.GetKeyDown(KeyCode.UpArrow)) {
+            ToggleActiveState(true);
+        } else if (Input.GetKeyDown(KeyCode.DownArrow)) {
+            ToggleActiveState(false);
+        }
     }
 
     void Selection(int direction) {
