@@ -1,10 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using UnityEngine;
 
 public class DijkstraGameplay : MonoBehaviour {
 
     [SerializeField] GameObject[] Crosshairs;
+    [SerializeField] NeighboringNodes[] Pathways;
+
     private int currentNode = 0;
 
     // Start is called before the first frame update
@@ -15,6 +18,9 @@ public class DijkstraGameplay : MonoBehaviour {
                 Crosshairs[i].SetActive(i == currentNode);
             }
         }
+
+        HidePaths();
+        ShowPaths(currentNode);
     }
 
     // Update is called once per frame
@@ -39,7 +45,7 @@ public class DijkstraGameplay : MonoBehaviour {
             return;
         }
 
-        /* "This code a wrap around selection." */
+        /* "This code caused a wrap around selection." */
         // currentNode += direction;
         // if (currentNode < 0) {
         //     currentNode = Crosshairs.Length - 1;
@@ -55,8 +61,12 @@ public class DijkstraGameplay : MonoBehaviour {
         }
 
         Crosshairs[currentNode].SetActive(false);
+        HidePaths();
+
         currentNode = nextNode;
+
         Crosshairs[currentNode].SetActive(true);
+        ShowPaths(currentNode);
     }
 
     // void ToggleActiveState(bool active) {
@@ -66,4 +76,24 @@ public class DijkstraGameplay : MonoBehaviour {
     //
     //     Crosshairs[currentNode].SetActive(active);
     // }
+
+    void HidePaths() {
+        foreach (var node in Pathways) {
+            foreach (var lineRenderer in node.paths) {
+                lineRenderer.enabled = false;
+            }
+        }
+    }
+
+    void ShowPaths(int nodeIndex) {
+        foreach (var lineRenderer in Pathways[nodeIndex].paths) {
+            lineRenderer.enabled = true;
+        }
+    }
+}
+
+[System.Serializable]
+public class NeighboringNodes {
+    public GameObject node;
+    public List<LineRenderer> paths;
 }
