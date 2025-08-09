@@ -56,7 +56,7 @@ public class DijkstraGameplay : MonoBehaviour {
         int nextNode = currentNode + direction;
 
         /* "Node selections no longer wrap around."*/
-        if (nextNode < 0 || nextNode >= Crosshairs.Length) {
+        if (nextNode < 0 || nextNode >= Crosshairs.Length - 1) {
             return;
         }
 
@@ -83,11 +83,25 @@ public class DijkstraGameplay : MonoBehaviour {
                 lineRenderer.enabled = false;
             }
         }
+
+        foreach (var ch in Crosshairs) {
+            ch.SetActive(false);
+        }
     }
 
     void ShowPaths(int nodeIndex) {
+        foreach (var ch in Crosshairs) {
+            ch.SetActive(false);
+        }
+
+        Crosshairs[nodeIndex].SetActive(true);
+
         foreach (var lineRenderer in Pathways[nodeIndex].paths) {
             lineRenderer.enabled = true;
+        }
+
+        foreach (var neighborIndex in Pathways[nodeIndex].neighbors) {
+            Crosshairs[neighborIndex].SetActive(true);
         }
     }
 }
@@ -96,4 +110,5 @@ public class DijkstraGameplay : MonoBehaviour {
 public class NeighboringNodes {
     public GameObject node;
     public List<LineRenderer> paths;
+    public List<int> neighbors;
 }
