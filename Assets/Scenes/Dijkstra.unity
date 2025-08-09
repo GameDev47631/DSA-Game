@@ -3106,16 +3106,26 @@ MonoBehaviour:
   - {fileID: 1144059962}
   - {fileID: 1772974225}
   - {fileID: 1894975564}
-  LineRenderers:
-  - {fileID: 277081639}
-  - {fileID: 2092707460}
-  - {fileID: 699584211}
-  - {fileID: 1494861514}
-  - {fileID: 915370558}
-  - {fileID: 1054010463}
-  - {fileID: 1359867446}
-  - {fileID: 981488943}
-  - {fileID: 99746935}
+  Pathways:
+  - node: {fileID: 1778250712}
+    paths:
+    - {fileID: 277081642}
+    - {fileID: 2092707463}
+  - node: {fileID: 1641347543}
+    paths:
+    - {fileID: 699584214}
+    - {fileID: 1494861517}
+  - node: {fileID: 1854860993}
+    paths:
+    - {fileID: 915370561}
+    - {fileID: 1054010466}
+  - node: {fileID: 1642659681}
+    paths:
+    - {fileID: 1359867449}
+    - {fileID: 981488946}
+  - node: {fileID: 128379042}
+    paths:
+    - {fileID: 99746938}
 --- !u!1 &981488943
 GameObject:
   m_ObjectHideFlags: 0
