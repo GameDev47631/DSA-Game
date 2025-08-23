@@ -101,7 +101,7 @@ public class DijkstraGameplay : MonoBehaviour {
         }
 
         foreach (var neighborIndex in Pathways[nodeIndex].neighbors) {
-            Crosshairs[neighborIndex].SetActive(true);
+            neighborIndex.SetActive(true);
         }
     }
 }
@@ -110,5 +110,5 @@ public class DijkstraGameplay : MonoBehaviour {
 public class NeighboringNodes {
     public GameObject node;
     public List<LineRenderer> paths;
-    public List<int> neighbors;
+    public List<GameObject> neighbors;
 }

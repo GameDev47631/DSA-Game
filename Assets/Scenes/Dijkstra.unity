@@ -3004,26 +3004,38 @@ MonoBehaviour:
     paths:
     - {fileID: 277081642}
     - {fileID: 2092707463}
-    neighbors: 0000000001000000
+    neighbors:
+    - {fileID: 1641347543}
+    - {fileID: 1854860993}
+    restrictedNeighbors: []
   - node: {fileID: 1641347543}
     paths:
     - {fileID: 699584214}
     - {fileID: 1494861517}
-    neighbors: 0100000002000000
+    neighbors: []
+    restrictedNeighbors: []
   - node: {fileID: 1854860993}
     paths:
     - {fileID: 915370561}
     - {fileID: 1054010466}
-    neighbors: 0200000003000000
+    neighbors: []
+    restrictedNeighbors: []
   - node: {fileID: 1642659681}
     paths:
     - {fileID: 1359867449}
     - {fileID: 981488946}
-    neighbors: 0300000004000000
+    neighbors: []
+    restrictedNeighbors: []
   - node: {fileID: 128379042}
     paths:
     - {fileID: 99746938}
-    neighbors: 05000000
+    neighbors:
+    - {fileID: 1672318728}
+    restrictedNeighbors:
+    - {fileID: 1778250712}
+    - {fileID: 1641347543}
+    - {fileID: 1854860993}
+    - {fileID: 1642659681}
 --- !u!1 &981488943
 GameObject:
   m_ObjectHideFlags: 0
