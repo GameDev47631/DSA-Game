@@ -2,10 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class LR_LineController : MonoBehaviour {
+public class LineController : MonoBehaviour {
     /* https://www.youtube.com/watch?v=RMM3BAick4I */
 
-    [SerializeField] private float animating = 5f;
+    [SerializeField] public float animating = 1f;
     private LineRenderer lineRenderer;
     private Vector3[] vertices;
     private int numVertices;
@@ -28,7 +28,7 @@ public class LR_LineController : MonoBehaviour {
 
     }
 
-    private IEnumerator AnimateLine() {
+    public IEnumerator AnimateLine() {
         float segmentTime = animating / numVertices;
 
         for (int i = 0; i < numVertices; i++) {

@@ -8,16 +8,16 @@ public class DijkstraGameplay : MonoBehaviour {
     [SerializeField] GameObject[] Crosshairs;
     [SerializeField] NeighboringNodes[] Pathways;
 
-    private int currentNode = 0;
+    private int currentNode, nextNode;
 
     // Start is called before the first frame update
     void Start() {
-        // "The number of crosshairs will depend on how many nodes there are."
-        if (Crosshairs.Length > 0) {
-            for (int i = 0; i < Crosshairs.Length; i++) {
-                Crosshairs[i].SetActive(i == currentNode);
-            }
-        }
+        /* "The number of crosshairs will depend on how many nodes there are." */
+        // if (Crosshairs.Length > 0) {
+        //     for (int i = 0; i < Crosshairs.Length; i++) {
+        //         Crosshairs[i].SetActive(i == currentNode);
+        //     }
+        // }
 
         HidePaths();
         ShowPaths(currentNode);
@@ -27,25 +27,23 @@ public class DijkstraGameplay : MonoBehaviour {
     void Update() {
         /* "Use the arrow keys to select the current node." */
         if (Input.GetKeyDown(KeyCode.LeftArrow)) {
-            Selection(-1);
+            Options(-1);
         } else if (Input.GetKeyDown(KeyCode.RightArrow)) {
-            Selection(1);
+            Options(1);
         }
 
-        // if (Input.GetKeyDown(KeyCode.UpArrow)) {
-        //     ToggleActiveState(true);
-        // } else if (Input.GetKeyDown(KeyCode.DownArrow)) {
-        //     ToggleActiveState(false);
-        // }
-
+        if (Input.GetKeyDown(KeyCode.Return)) {
+            Selection(currentNode);
+            Debug.Log("Selected Node: " + currentNode);
+        }
     }
 
-    void Selection(int direction) {
+    void Selection(int nodeIndex) {
         if (Crosshairs.Length == 0) {
             return;
         }
 
-        /* "This code caused a wrap around selection." */
+        /* "This code caused a wraparound selection." */
         // currentNode += direction;
         // if (currentNode < 0) {
         //     currentNode = Crosshairs.Length - 1;
@@ -53,29 +51,32 @@ public class DijkstraGameplay : MonoBehaviour {
         //     currentNode = 0;
         // }
 
-        int nextNode = currentNode + direction;
+        /* "This code prevented said wraparound.
+            It is now redirected the 'Options()' method." */
+        // int nextNode = currentNode + direction;
+        // if (nextNode < 0 || nextNode >= Crosshairs.Length - 1) {
+        //     return;
+        // }
 
-        /* "Node selections no longer wrap around."*/
-        if (nextNode < 0 || nextNode >= Crosshairs.Length - 1) {
-            return;
-        }
+        // Crosshairs[currentNode].SetActive(false);
+        // HidePaths();
 
-        Crosshairs[currentNode].SetActive(false);
-        HidePaths();
+        // currentNode = nextNode;
 
-        currentNode = nextNode;
-
-        Crosshairs[currentNode].SetActive(true);
-        ShowPaths(currentNode);
+        // Crosshairs[currentNode].SetActive(true);
+        ShowPaths(nodeIndex);
     }
 
-    // void ToggleActiveState(bool active) {
-    //     if (Crosshairs.Length == 0) {
-    //         return;
-    //     }
-    //
-    //     Crosshairs[currentNode].SetActive(active);
-    // }
+    void Options(int direction) {
+        nextNode = currentNode + direction;
+        if (nextNode < 0 || nextNode >= Crosshairs.Length) {
+            return;
+        }
+        
+        currentNode = nextNode;
+
+        ShowPaths(currentNode);
+    }
 
     void HidePaths() {
         foreach (var node in Pathways) {

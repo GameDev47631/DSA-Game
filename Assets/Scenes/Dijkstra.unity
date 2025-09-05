@@ -378,7 +378,7 @@ GameObject:
   - component: {fileID: 99746937}
   m_Layer: 0
   m_Name: E-Z
-  m_TagString: Untagged
+  m_TagString: LineRenderer
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -615,7 +615,7 @@ GameObject:
   - component: {fileID: 277081643}
   m_Layer: 0
   m_Name: A-B
-  m_TagString: Untagged
+  m_TagString: LineRenderer
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1713,7 +1713,7 @@ GameObject:
   - component: {fileID: 699584213}
   m_Layer: 0
   m_Name: B-C
-  m_TagString: Untagged
+  m_TagString: LineRenderer
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2617,7 +2617,7 @@ GameObject:
   - component: {fileID: 915370560}
   m_Layer: 0
   m_Name: C-D
-  m_TagString: Untagged
+  m_TagString: LineRenderer
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3007,35 +3007,32 @@ MonoBehaviour:
     neighbors:
     - {fileID: 1641347543}
     - {fileID: 1854860993}
-    restrictedNeighbors: []
   - node: {fileID: 1641347543}
     paths:
     - {fileID: 699584214}
     - {fileID: 1494861517}
-    neighbors: []
-    restrictedNeighbors: []
+    neighbors:
+    - {fileID: 1854860993}
+    - {fileID: 1642659681}
   - node: {fileID: 1854860993}
     paths:
     - {fileID: 915370561}
     - {fileID: 1054010466}
-    neighbors: []
-    restrictedNeighbors: []
+    neighbors:
+    - {fileID: 1642659681}
+    - {fileID: 128379042}
   - node: {fileID: 1642659681}
     paths:
     - {fileID: 1359867449}
     - {fileID: 981488946}
-    neighbors: []
-    restrictedNeighbors: []
+    neighbors:
+    - {fileID: 128379042}
+    - {fileID: 1672318728}
   - node: {fileID: 128379042}
     paths:
     - {fileID: 99746938}
     neighbors:
     - {fileID: 1672318728}
-    restrictedNeighbors:
-    - {fileID: 1778250712}
-    - {fileID: 1641347543}
-    - {fileID: 1854860993}
-    - {fileID: 1642659681}
 --- !u!1 &981488943
 GameObject:
   m_ObjectHideFlags: 0
@@ -3049,7 +3046,7 @@ GameObject:
   - component: {fileID: 981488945}
   m_Layer: 0
   m_Name: D-Z
-  m_TagString: Untagged
+  m_TagString: LineRenderer
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3199,7 +3196,7 @@ GameObject:
   - component: {fileID: 1054010465}
   m_Layer: 0
   m_Name: C-E
-  m_TagString: Untagged
+  m_TagString: LineRenderer
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4086,7 +4083,7 @@ GameObject:
   - component: {fileID: 1359867448}
   m_Layer: 0
   m_Name: D-E
-  m_TagString: Untagged
+  m_TagString: LineRenderer
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4726,7 +4723,7 @@ GameObject:
   - component: {fileID: 1494861516}
   m_Layer: 0
   m_Name: B-D
-  m_TagString: Untagged
+  m_TagString: LineRenderer
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6905,7 +6902,7 @@ GameObject:
   - component: {fileID: 2092707462}
   m_Layer: 0
   m_Name: A-C
-  m_TagString: Untagged
+  m_TagString: LineRenderer
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
