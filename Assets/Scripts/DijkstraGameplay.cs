@@ -19,6 +19,8 @@ public class DijkstraGameplay : MonoBehaviour {
         //     }
         // }
 
+        Crosshairs = GameObject.FindGameObjectsWithTag("Crosshair");
+
         HidePaths();
         ShowPaths(currentNode);
     }
