@@ -3,22 +3,19 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class Transition : MonoBehaviour
-{
+public class Transition : MonoBehaviour {
     /* https://www.youtube.com/watch?v=CE9VOZivb3I? */
 
     public Animator transition;
     public float transitioning = 1f;
 
     // Start is called before the first frame update
-    void Start()
-    {
+    void Start() {
 
     }
 
     // Update is called once per frame
-    void Update()
-    {
+    void Update() {
 
     }
 
@@ -26,14 +23,11 @@ public class Transition : MonoBehaviour
     //     StartCoroutine(LoadLevel(SceneManager.GetActiveScene().buildIndex + 1));
     // }
 
-    public void LoadSceneByName(string sceneName)
-    {
+    public void LoadSceneByName(string sceneName) {
         StartCoroutine(Loading(sceneName.ToString()));
-
     }
 
-    IEnumerator Loading(string sceneName)
-    {
+    IEnumerator Loading(string sceneName) {
         // "Animate the scene transition."
         transition.SetTrigger("Start");
 
